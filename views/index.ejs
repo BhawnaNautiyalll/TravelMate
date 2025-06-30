@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelMate</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="flex flex-col items-center">
+    <h1 class="bg-red-100 font-bold w-full text-center p-5 m-2">WELCOME TO TRAVELMATE</h1>
+
+    <!-- DIV FOR WEATHER FORECAST -->
+    <% if(locals.weather){ %>
+        <div class="border rounded-lg shadow p-4 w-1/3 bg-white flex flex-col items-center">
+            <h2 class="font-bold py-2">
+                weather forcast
+            </h2>
+            <p>
+                <%= weather.weather[0].description ;%>
+            </p>
+
+
+            <p> Temp :
+                <%= weather.main.temp %> °C
+            </p>
+
+            <p>
+                Wind speed :
+                <%= weather.wind.speed %>
+            </p>
+        </div>
+        <% } else { %>
+            <div class="border rounded-lg shadow p-4 w-1/3 bg-white flex flex-col items-center">
+                <h2 class="font-bold py-2">
+                    weather forcast
+                </h2>
+                <p> Weather data not available for this location.</p>
+            </div>
+            <% } %>
+
+                <!-- DIV FOR POLLUTION FORECAST -->
+                <% if(locals.air){ %>
+                    <div class="border rounded-lg shadow p-4 w-1/3 bg-white flex flex-col items-center my-5">
+                        <h1>POLLUTION</h1>
+                        <p> AQI:
+                            <%=air.list[0].main.aqi %>
+                        </p>
+                    </div>
+                    <% } else { %>
+                        <div class="border rounded-lg shadow p-4 w-1/3 bg-white flex flex-col items-center my-5">
+                            <h1>POLLUTION</h1>
+                            <p> Pollution data not available for this location.</p>
+                        </div>
+                        <% } %>
+
+
+
+</body>
+
+</html>
